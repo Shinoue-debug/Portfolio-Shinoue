@@ -16,18 +16,18 @@
 }
 
 :root {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8f9fa;
+    --bg-primary: #0f0f1a;
+    --bg-secondary: #1a1a2e;
     --bg-card: #ffffff;
     --text-primary: #2d3436;
     --text-secondary: #636e72;
-    --accent: #6c5ce7;
-    --accent-hover: #5a4bd1;
-    --accent-light: #a29bfe;
+    --accent: #fa8072;
+    --accent-hover: #fa8072;
+    --accent-light: #ffb6c1;
     --border: #e0e0e0;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
-    --gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    --gradient: linear-gradient(135deg, #ffb6c1 0%, #fa8072 100%);
     --radius: 16px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -38,13 +38,13 @@ body.dark {
     --bg-card: #16213e;
     --text-primary: #e0e0e0;
     --text-secondary: #a0a0b0;
-    --accent: #a29bfe;
+    --accent: #fa8072;
     --accent-hover: #b8b5ff;
-    --accent-light: #6c5ce7;
+    --accent-light: #ffb6c1;
     --border: #2a2a4a;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     --shadow-hover: 0 8px 30px rgba(108, 92, 231, 0.15);
-    --gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    --gradient: linear-gradient(135deg, #fa8072 0%, #ffb6c1 100%);
 }
 
 html {
@@ -72,10 +72,15 @@ header {
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
+/* Conteneur pour le header-top */
+.header-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
 .theme-toggle {
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -86,6 +91,7 @@ header {
     font-size: 0.95rem;
     transition: all var(--transition);
     z-index: 10;
+    white-space: nowrap;
 }
 
 .theme-toggle:hover {
@@ -103,6 +109,7 @@ nav ul {
     justify-content: center;
     gap: 0.5rem;
     flex-wrap: wrap;
+    padding: 0;
 }
 
 nav ul li a {
@@ -588,6 +595,17 @@ footer p:has(«) {
         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
     }
 
+    /* Le bouton mode sombre passe au-dessus de la navigation */
+    .header-top {
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .theme-toggle {
+        font-size: 0.85rem;
+        padding: 0.5rem 1.2rem;
+    }
+
     header h1 {
         font-size: 2rem;
     }
@@ -596,15 +614,8 @@ footer p:has(«) {
         font-size: 1rem;
     }
 
-    .theme-toggle {
-        top: 1rem;
-        right: 1rem;
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-    }
-
     nav ul {
-        gap: 0.3rem;
+        gap: 0.4rem;
     }
 
     nav ul li a {
@@ -657,6 +668,20 @@ footer p:has(«) {
 }
 
 @media (max-width: 480px) {
+    header {
+        padding: 1.2rem 0.8rem 2rem;
+    }
+
+    .header-top {
+        justify-content: center;
+        margin-bottom: 1.2rem;
+    }
+
+    .theme-toggle {
+        font-size: 0.8rem;
+        padding: 0.45rem 1rem;
+    }
+
     header h1 {
         font-size: 1.6rem;
     }
@@ -669,6 +694,15 @@ footer p:has(«) {
         font-size: 1.6rem;
     }
 
+    nav ul {
+        gap: 0.3rem;
+    }
+
+    nav ul li a {
+        padding: 0.45rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
     .skills span {
         padding: 0.5rem 1rem;
         font-size: 0.85rem;
@@ -678,23 +712,34 @@ footer p:has(«) {
     .project-card video {
         height: 180px;
     }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links a {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.85rem;
+    }
 }
     </style>
    </head>
 <body>
      <header>
+    <div class="header-top">
         <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">🌙 Mode sombre</button>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="projets.html">Projets</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <h1>Bienvenue sur mon portfolio</h1>
-        <p>Je suis Haby Sow, aspirante hackeuse , curieuse du code , exploratrice des failles.</p>
-    </header>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <h1>Bienvenue sur mon portfolio</h1>
+    <p>Je suis Shinouee, aspirante hackeuse, curieuse du code, exploratrice des failles.</p>
+</header>
 
     <section class="featured-projects">
         <h2>Projets récents</h2>
